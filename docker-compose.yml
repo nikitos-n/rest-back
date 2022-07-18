@@ -1,0 +1,31 @@
+version: '3.3'
+
+volumes:
+  storage-data:
+
+services:
+  postgres:
+    image: "postgres:14-alpine"
+    volumes:
+      - storage-data:/var/lib/postgresql/data
+    env_file: .env
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  tms_worker_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tms_worker_server
+    stdin_open: true
+    tty: true
+    env_file: .env
+    environment:
+      POSTGRES_HOST: postgres
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/app
+    ports:
+      - "3001:${PORT}"

@@ -4,17 +4,33 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "go": "nodemon src/main.js --ignore 'src/**/*.json'"
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:restart": "docker-compose down -v && docker-compose up --build",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:undo:one": "npx sequelize-cli db:migrate:undo",
+    "db:seed:all": "npx sequelize-cli db:seed:all",
+    "db:seed:undo": "npx sequelize-cli db:seed:undo",
+    "start": "nodemon ./src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^16.11.26",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
     "find-my-way": "^5.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.3",
+    "sequelize": "^6.21.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "@faker-js/faker": "^7.3.0",
+    "@types/node": "^16.11.26",
+    "@types/sequelize": "^4.28.14",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.2",
+    "sequelize-cli": "^6.4.1"
   }
 }

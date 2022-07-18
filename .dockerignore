@@ -1,0 +1,12 @@
+.vscode
+.idea
+.git
+
+.env
+.env.example
+.gitignore
+Dockerfile
+docker-compose.yml
+install_project.sh
+README.md
+

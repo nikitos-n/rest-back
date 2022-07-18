@@ -1,0 +1,15 @@
+[
+    {
+        "login": "test_vova",
+        "name": "Владик люблю котов",
+        "image": "https://klike.net/uploads/posts/2018-10/1539499416_1.jpg",
+        "id": "ec4816fe-0cd6-4c6b-ada9-509f91f17129",
+        "password": "$2b$10$Nj146afq8B92UUuDPwA7mutI3gSytSSbho/3oFJOSDWXvOkfn9p6."
+    },
+    {
+        "login": "test@mail.ru",
+        "name": "name",
+        "id": "d1b0c4bc-b012-4014-83ad-a1115d071f81",
+        "password": "$2b$10$Nj146afq8B92UUuDPwA7mu2BXElXEF/TPF2RSxvVUb.sTw6Zwnx.a"
+    }
+]
