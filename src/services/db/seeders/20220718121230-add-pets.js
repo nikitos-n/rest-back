@@ -11,7 +11,7 @@ module.exports = {
       name: faker.name.firstName(),
       age: faker.datatype.number({ min: 7, max: 70 }),
       image: '',
-      userId: users[Math.floor(Math.random() * users.length)].id,
+      UserId: users[Math.floor(Math.random() * users.length)].id,
       createdAt: new Date()
     }))
 

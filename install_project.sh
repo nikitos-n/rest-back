@@ -5,6 +5,6 @@ cp .env.local .env && \
   npm run docker:up && \
   sleep 5 && \
   npm run db:migrate && \
-  npm db:seed:all && \
+  npm run db:seed:all && \
   echo "Project installed and ready to run"
 

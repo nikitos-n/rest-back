@@ -3,6 +3,7 @@ const usersService = require('../services/users')
 
 exports.getPets = async (res) => {
   try {
+    console.log('getPets')
     const pets = await petsService.getPetList()
     return pets
   } catch (err) {

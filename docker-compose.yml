@@ -5,27 +5,74 @@ volumes:
 
 services:
   postgres:
-    image: "postgres:14-alpine"
+    image: "postgres:14.4-alpine"
+    restart: unless-stopped
+    env_file: .env
     volumes:
       - storage-data:/var/lib/postgresql/data
-    env_file: .env
-    restart: unless-stopped
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
 
-  tms_worker_server:
+  # tms_web_server:
+  #   image: nginx:1.23-alpine
+  #   restart: unless-stopped
+  #   environment:
+  #     NGINX_PORT: 80
+  #   volumes:
+  #     - ./docker/nginx.conf:/etc/nginx/default.conf
+  #   ports:
+  #     - "3000:80"
+
+  tms_worker_server_1:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: tms_worker_server
+    container_name: tms_worker_server_1
     stdin_open: true
     tty: true
     env_file: .env
     environment:
       POSTGRES_HOST: postgres
+      CONTAINER_ID: "NODE SERVER ONE"
     depends_on:
       - postgres
     volumes:
       - ./:/app
     ports:
-      - "3001:${PORT}"
+      - "3001:80"
+
+  # tms_worker_server_2:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: tms_worker_server_2
+  #   stdin_open: true
+  #   tty: true
+  #   env_file: .env
+  #   environment:
+  #     POSTGRES_HOST: postgres
+  #     CONTAINER_ID: "NODE SERVER TWO"
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./:/app
+  #   ports:
+  #     - "3002:80"
+
+  # tms_worker_server_3:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: tms_worker_server_3
+  #   stdin_open: true
+  #   tty: true
+  #   env_file: .env
+  #   environment:
+  #     POSTGRES_HOST: postgres
+  #     CONTAINER_ID: "NODE SERVER THREE"
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./:/app
+  #   ports:
+  #     - "3003:80"

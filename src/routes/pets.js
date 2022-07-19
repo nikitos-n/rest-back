@@ -8,6 +8,7 @@ const catRouter = (router) => {
     '/pets',
     routerMiddleware([
       async (req, res) => {
+        console.log('1234')
         const result = await petsController.getPets(res)
         res.end(JSON.stringify(result))
       },

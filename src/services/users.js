@@ -1,7 +1,7 @@
 const { v4: uuid } = require('uuid')
 const { HttpError } = require('../utils/requestResponseErrors')
 const { cache } = require('../utils/cacheData')
-const models = require('../model')
+const models = require('./db/models')
 
 const userModel = require('../model/user')
 const catModel = require('../model/cat')

@@ -1,9 +1,12 @@
 const { HttpError } = require('../utils/requestResponseErrors')
 const { cache } = require('../utils/cacheData')
-const models = require('../model')
+const models = require('./db/models')
 
 exports.getPetList = async () => {
-  const cats = await catModel.fetchAllPets()
+  const cats = await models.Pet.findAll({
+    limit: 10,
+    offset: 0
+  })
   return cats
 }
 
